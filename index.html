@@ -1,133 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>$MOONINU - The Moon Pack</title>
-
 <style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: radial-gradient(circle at top, #1a1a2e, #000);
-    color: white;
-    text-align: center;
+html{
+    scroll-behavior:smooth;
 }
-
-/* 🎥 VIDEO BACKGROUND */
-.video-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: -2;
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:linear-gradient(to bottom,#050816,#000);
+    color:white;
+    text-align:center;
+    overflow-x:hidden;
 }
-
-.video-bg video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: brightness(0.4) contrast(1.2);
+/* Animated Starfield */
+.stars,.stars2,.stars3{
+    position:fixed;
+    top:0;
+    left:0;
+    width:200%;
+    height:200%;
+    z-index:-3;
 }
-
-/* 🌑 DARK OVERLAY */
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at top, rgba(0,0,0,0.3), rgba(0,0,0,0.9));
-    z-index: -1;
+.stars{
+    background-image:
+    radial-gradient(2px 2px at 20px 30px,#fff,transparent),
+    radial-gradient(2px 2px at 80px 120px,#fff,transparent),
+    radial-gradient(1px 1px at 150px 60px,#fff,transparent);
+    background-size:200px 200px;
+    animation:moveStars 120s linear infinite;
 }
-
-header {
-    padding: 60px 20px;
+.stars2{
+    background-image:
+    radial-gradient(2px 2px at 50px 50px,#7c5cff,transparent),
+    radial-gradient(2px 2px at 120px 90px,#00d4ff,transparent);
+    background-size:300px 300px;
+    animation:moveStars 180s linear infinite;
+    opacity:.6;
 }
-
-h1 {
-    font-size: 42px;
-    color: #7c5cff;
+.stars3{
+    background-image:
+    radial-gradient(3px 3px at 75px 75px,#fff,transparent);
+    background-size:400px 400px;
+    animation:moveStars 240s linear infinite;
+    opacity:.4;
 }
-
-.tagline {
-    font-size: 18px;
-    opacity: 0.8;
+@keyframes moveStars{
+    from{transform:translate(0,0);}
+    to{transform:translate(-500px,-500px);}
 }
-
-.btn {
-    display: inline-block;
-    margin: 10px;
-    padding: 12px 20px;
-    background: #7c5cff;
-    color: white;
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight: bold;
+/* Floating Moon */
+.moon{
+    position:fixed;
+    top:70px;
+    right:60px;
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    background:#fff;
+    box-shadow:
+    0 0 30px #fff,
+    0 0 80px #7c5cff;
+    z-index:-2;
+    animation:floatMoon 8s ease-in-out infinite;
 }
-
-section {
-    padding: 40px 20px;
+@keyframes floatMoon{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-20px);}
 }
-
-.card {
-    background: rgba(255,255,255,0.05);
-    padding: 20px;
-    margin: 15px auto;
-    border-radius: 12px;
-    max-width: 600px;
+header{
+    padding:80px 20px;
 }
-
-footer {
-    padding: 20px;
-    font-size: 12px;
-    opacity: 0.6;
+h1{
+    font-size:56px;
+    color:#7c5cff;
+    text-shadow:0 0 20px #7c5cff;
+}
+.tagline{
+    font-size:20px;
+    opacity:.9;
+}
+.hype{
+    color:#00d4ff;
+    font-size:22px;
+    font-weight:bold;
+    margin-top:20px;
+    animation:pulse 2s infinite;
+}
+@keyframes pulse{
+    0%{text-shadow:0 0 10px #7c5cff;}
+    50%{text-shadow:0 0 30px #00d4ff;}
+    100%{text-shadow:0 0 10px #7c5cff;}
+}
+.btn{
+    display:inline-block;
+    margin:10px;
+    padding:14px 28px;
+    background:linear-gradient(45deg,#7c5cff,#00d4ff);
+    color:white;
+    border-radius:12px;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.3s;
+    box-shadow:0 0 15px rgba(124,92,255,.4);
+}
+.btn:hover{
+    transform:scale(1.08);
+}
+section{
+    padding:40px 20px;
+}
+.card{
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.1);
+    backdrop-filter:blur(10px);
+    padding:25px;
+    margin:20px auto;
+    border-radius:16px;
+    max-width:650px;
+    box-shadow:0 0 25px rgba(124,92,255,.15);
+}
+.counter{
+    font-size:24px;
+    font-weight:bold;
+    color:#00d4ff;
+}
+footer{
+    padding:30px;
+    opacity:.6;
 }
 </style>
 </head>
-
 <body>
-
-<!-- 🎥 BACKGROUND VIDEO (PUT YOUR moon.mp4 IN GITHUB) -->
-<div class="video-bg">
-    <video autoplay muted loop playsinline>
-        <source src="moon.mp4" type="video/mp4">
-    </video>
-</div>
-
-<!-- 🌑 OVERLAY -->
-<div class="overlay"></div>
-
+<div class="stars"></div>
+<div class="stars2"></div>
+<div class="stars3"></div>
+<div class="moon"></div>
 <header>
     <h1>🌙 $MOONINU</h1>
-    <p class="tagline">The Moon Pack is rising 🚀 | Community-driven meme coin</p>
-
-    <a class="btn" href="#about">About</a>
-    <a class="btn" href="#community">Join Community</a>
+<p class="tagline">
+    The Moon Pack is rising 🚀 | Community-driven meme coin
+</p>
+<div class="hype">
+    🔥 JOIN THE PACK BEFORE LIFTOFF 🔥
+</div>
+<br>
+<a class="btn" href="#about">About</a>
+<a class="btn" href="#community">Join Community</a>
 </header>
-
 <section id="about">
     <div class="card">
         <h2>About $MOONINU</h2>
-        <p>$MOONINU is a community-powered meme coin built for fun, culture, and the next wave of crypto degens. Join the Moon Pack and ride to the moon 🚀</p>
+        <p>
+            $MOONINU is a community-powered meme coin built for fun,
+            culture and the next wave of crypto degens.
+            Join the Moon Pack and ride to the moon 🚀
+        </p>
     </div>
 </section>
-
+<section>
+    <div class="card">
+        <h2>Moon Pack Statistics</h2>
+        <div id="holders" class="counter">
+            Holders: 1,204
+        </div>
+    </div>
+</section>
 <section id="community">
     <div class="card">
         <h2>Join the Community</h2>
         <p>Follow the Moon Pack updates and announcements.</p>
-
-        <a class="btn" href="https://twitter.com/" target="_blank">Twitter</a>
-        <a class="btn" href="https://t.me/" target="_blank">Telegram</a>
-    </div>
+    <a class="btn" href="https://twitter.com/" target="_blank">Twitter</a>
+    <a class="btn" href="https://t.me/" target="_blank">Telegram</a>
+</div>
 </section>
-
 <footer>
     © 2026 $MOONINU — Built by the Moon Pack
 </footer>
-
+<script>
+let holders = 1204;
+setInterval(() => {
+    holders += Math.floor(Math.random() * 3);
+    document.getElementById("holders").innerText =
+        "Holders: " + holders.toLocaleString();
+}, 4000);
+</script>
 </body>
 </html>
