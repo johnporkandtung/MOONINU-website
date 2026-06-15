@@ -1,309 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>$MOONINU - The Moon Pack</title>
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: radial-gradient(circle at top, #1a1a2e, #000);
+    color: white;
+    text-align: center;
 }
 
-body{
-background:#050816;
-color:white;
-overflow-x:hidden;
+header {
+    padding: 60px 20px;
 }
 
-header{
-padding:20px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-position:fixed;
-width:100%;
-background:rgba(0,0,0,0.3);
-backdrop-filter:blur(10px);
-z-index:100;
+h1 {
+    font-size: 42px;
+    color: #7c5cff;
 }
 
-.logo{
-font-size:28px;
-font-weight:bold;
-color:#ffd700;
+.tagline {
+    font-size: 18px;
+    opacity: 0.8;
 }
 
-nav a{
-color:white;
-text-decoration:none;
-margin-left:20px;
+.btn {
+    display: inline-block;
+    margin: 10px;
+    padding: 12px 20px;
+    background: #7c5cff;
+    color: white;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
 }
 
-.hero{
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:20px;
-position:relative;
+section {
+    padding: 40px 20px;
 }
 
-.hero h1{
-font-size:70px;
-color:#ffd700;
-text-shadow:0 0 20px #ffd700;
-animation:pulse 2s infinite;
+.card {
+    background: rgba(255,255,255,0.05);
+    padding: 20px;
+    margin: 15px auto;
+    border-radius: 12px;
+    max-width: 600px;
 }
 
-.hero p{
-font-size:22px;
-margin-top:20px;
-max-width:700px;
-}
-
-.buttons{
-margin-top:35px;
-}
-
-.btn{
-display:inline-block;
-padding:15px 30px;
-margin:10px;
-border-radius:50px;
-text-decoration:none;
-font-weight:bold;
-transition:0.3s;
-}
-
-.buy{
-background:#ffd700;
-color:black;
-}
-
-.buy:hover{
-transform:scale(1.1);
-}
-
-.social{
-border:2px solid #ffd700;
-color:#ffd700;
-}
-
-.social:hover{
-background:#ffd700;
-color:black;
-}
-
-section{
-padding:100px 20px;
-text-align:center;
-}
-
-.section-title{
-font-size:42px;
-margin-bottom:40px;
-color:#ffd700;
-}
-
-.tokenomics{
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-gap:20px;
-}
-
-.card{
-background:#0f172a;
-padding:25px;
-border-radius:20px;
-width:250px;
-box-shadow:0 0 15px rgba(255,215,0,0.2);
-}
-
-.card h3{
-color:#ffd700;
-margin-bottom:10px;
-}
-
-.roadmap{
-max-width:800px;
-margin:auto;
-text-align:left;
-}
-
-.phase{
-background:#0f172a;
-padding:20px;
-margin-bottom:20px;
-border-left:5px solid #ffd700;
-border-radius:10px;
-}
-
-footer{
-padding:40px;
-text-align:center;
-background:#02040a;
-}
-
-.moon{
-position:absolute;
-top:10%;
-right:10%;
-width:180px;
-height:180px;
-background:#ffd700;
-border-radius:50%;
-box-shadow:0 0 80px #ffd700;
-animation:float 5s ease-in-out infinite;
-}
-
-.stars{
-position:fixed;
-width:100%;
-height:100%;
-pointer-events:none;
-}
-
-.star{
-position:absolute;
-width:3px;
-height:3px;
-background:white;
-border-radius:50%;
-animation:twinkle 2s infinite;
-}
-
-@keyframes pulse{
-0%,100%{transform:scale(1);}
-50%{transform:scale(1.05);}
-}
-
-@keyframes float{
-0%,100%{transform:translateY(0);}
-50%{transform:translateY(-20px);}
-}
-
-@keyframes twinkle{
-0%,100%{opacity:0.2;}
-50%{opacity:1;}
+footer {
+    padding: 20px;
+    font-size: 12px;
+    opacity: 0.6;
 }
 </style>
 </head>
 
 <body>
 
-<div class="stars" id="stars"></div>
-
 <header>
-<div class="logo">$MOONINU</div>
-<nav>
-<a href="#tokenomics">Tokenomics</a>
-<a href="#roadmap">Roadmap</a>
-</nav>
+    <h1>🌙 $MOONINU</h1>
+    <p class="tagline">The Moon Pack is rising 🚀 | Community-driven meme coin</p>
+
+    <a class="btn" href="#about">About</a>
+    <a class="btn" href="#tokenomics">Tokenomics</a>
+    <a class="btn" href="#community">Join Community</a>
 </header>
 
-<section class="hero">
-<div class="moon"></div>
-
-<h1>$MOONINU 🚀🌙</h1>
-
-<p>
-The Moon Pack is gathering.
-No VCs. No insiders.
-Just diamond paws, memes and a mission to reach the moon.
-</p>
-
-<div class="buttons">
-<a href="#" class="btn buy">BUY NOW</a>
-
-<a href="https://t.me/YOURGROUP" class="btn social">
-Telegram
-</a>
-
-<a href="https://x.com/YOURACCOUNT" class="btn social">
-Twitter/X
-</a>
-</div>
+<section id="about">
+    <div class="card">
+        <h2>About $MOONINU</h2>
+        <p>$MOONINU is a community-powered meme coin built for fun, culture, and the next wave of crypto degens. Join the Moon Pack and ride to the moon 🚀</p>
+    </div>
 </section>
 
 <section id="tokenomics">
-<h2 class="section-title">Tokenomics</h2>
-
-<div class="tokenomics">
-
-<div class="card">
-<h3>Total Supply</h3>
-<p>1,000,000,000</p>
-</div>
-
-<div class="card">
-<h3>Taxes</h3>
-<p>0%</p>
-</div>
-
-<div class="card">
-<h3>Liquidity</h3>
-<p>Burned 🔥</p>
-</div>
-
-<div class="card">
-<h3>Community</h3>
-<p>100%</p>
-</div>
-
-</div>
+    <div class="card">
+        <h2>Tokenomics</h2>
+        <p>🔥 Total Supply: 1,000,000,000</p>
+        <p>🌙 Liquidity: Locked (recommended)</p>
+        <p>🐕 Community: 100%</p>
+    </div>
 </section>
 
-<section id="roadmap">
-<h2 class="section-title">Roadmap</h2>
+<section id="community">
+    <div class="card">
+        <h2>Join the Community</h2>
+        <p>Follow the Moon Pack updates and announcements.</p>
 
-<div class="roadmap">
-
-<div class="phase">
-<h3>Phase 1</h3>
-<p>Launch • Website • Telegram • Twitter</p>
-</div>
-
-<div class="phase">
-<h3>Phase 2</h3>
-<p>500 Holders • Meme Campaign • Community Growth</p>
-</div>
-
-<div class="phase">
-<h3>Phase 3</h3>
-<p>Coin Listings • Partnerships • Moon Mission</p>
-</div>
-
-<div class="phase">
-<h3>Phase 4</h3>
-<p>100M Market Cap • Global Moon Pack</p>
-</div>
-
-</div>
+        <a class="btn" href="https://twitter.com/" target="_blank">Twitter</a>
+        <a class="btn" href="https://t.me/" target="_blank">Telegram</a>
+    </div>
 </section>
 
 <footer>
-<p>🌙 $MOONINU © 2026 • Built for the Moon Pack 🚀</p>
+    © 2026 $MOONINU — Built by the Moon Pack
 </footer>
-
-<script>
-const stars=document.getElementById('stars');
-
-for(let i=0;i<150;i++){
-const star=document.createElement('div');
-star.classList.add('star');
-star.style.left=Math.random()*100+'%';
-star.style.top=Math.random()*100+'%';
-star.style.animationDelay=Math.random()*2+'s';
-stars.appendChild(star);
-}
-</script>
 
 </body>
 </html>
