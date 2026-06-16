@@ -4,214 +4,216 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>$MOONINU - The Moon Pack</title>
+
+<!-- PARTICLES JS -->
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
 <style>
-    .coin-corner {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    width: 120px;
-    height: 120px;
-    z-index: 9999;
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: white;
+    background: #050816;
+    overflow-x: hidden;
 }
 
-.coin-corner img {
+/* PARTICLES BACKGROUND */
+#particles-js {
+    position: fixed;
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    animation: moonSpin 10s linear infinite;
-    filter: drop-shadow(0 0 20px rgba(255,255,255,0.7));
+    z-index: -1;
 }
 
-@keyframes moonSpin {
-    from {
-        transform: rotateY(0deg);
-    }
-    to {
-        transform: rotateY(360deg);
-    }
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 80px 20px;
 }
-html{
-    scroll-behavior:smooth;
+
+h1 {
+    font-size: 60px;
+    color: #7c5cff;
+    text-shadow: 0 0 25px #7c5cff;
 }
-body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:linear-gradient(to bottom,#050816,#000);
-    color:white;
-    text-align:center;
-    overflow-x:hidden;
+
+/* SPINNING COIN */
+.coin {
+    width: 180px;
+    margin: 20px auto;
+    animation: spin 6s linear infinite;
 }
-/* Animated Starfield */
-.stars,.stars2,.stars3{
-    position:fixed;
-    top:0;
-    left:0;
-    width:200%;
-    height:200%;
-    z-index:-3;
+
+@keyframes spin {
+    from { transform: rotateY(0deg); }
+    to { transform: rotateY(360deg); }
 }
-.stars{
-    background-image:
-    radial-gradient(2px 2px at 20px 30px,#fff,transparent),
-    radial-gradient(2px 2px at 80px 120px,#fff,transparent),
-    radial-gradient(1px 1px at 150px 60px,#fff,transparent);
-    background-size:200px 200px;
-    animation:moveStars 120s linear infinite;
+
+/* BUTTONS */
+.btn {
+    padding: 12px 25px;
+    margin: 10px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    background: #7c5cff;
+    color: white;
+    transition: 0.3s;
 }
-.stars2{
-    background-image:
-    radial-gradient(2px 2px at 50px 50px,#7c5cff,transparent),
-    radial-gradient(2px 2px at 120px 90px,#00d4ff,transparent);
-    background-size:300px 300px;
-    animation:moveStars 180s linear infinite;
-    opacity:.6;
+
+.btn:hover {
+    transform: scale(1.05);
+    background: #9a7bff;
 }
-.stars3{
-    background-image:
-    radial-gradient(3px 3px at 75px 75px,#fff,transparent);
-    background-size:400px 400px;
-    animation:moveStars 240s linear infinite;
-    opacity:.4;
+
+/* CARDS */
+.section {
+    padding: 50px 20px;
+    text-align: center;
 }
-@keyframes moveStars{
-    from{transform:translate(0,0);}
-    to{transform:translate(-500px,-500px);}
+
+.card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 20px;
+    margin: 15px auto;
+    max-width: 500px;
+    border-radius: 15px;
 }
-/* Floating Moon */
-.moon{
-    position:fixed;
-    top:70px;
-    right:60px;
-    width:120px;
-    height:120px;
-    border-radius:50%;
-    background:#fff;
-    box-shadow:
-    0 0 30px #fff,
-    0 0 80px #7c5cff;
-    z-index:-2;
-    animation:floatMoon 8s ease-in-out infinite;
+
+/* LIVE STATS */
+.stats {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
 }
-@keyframes floatMoon{
-    0%,100%{transform:translateY(0);}
-    50%{transform:translateY(-20px);}
+
+.stat-box {
+    background: rgba(255,255,255,0.05);
+    padding: 20px;
+    border-radius: 15px;
+    min-width: 180px;
 }
-header{
-    padding:80px 20px;
+
+/* DEX BUY BOX */
+.buy-box {
+    background: rgba(0,0,0,0.5);
+    border: 1px solid #7c5cff;
+    padding: 25px;
+    max-width: 500px;
+    margin: auto;
+    border-radius: 20px;
 }
-h1{
-    font-size:56px;
-    color:#7c5cff;
-    text-shadow:0 0 20px #7c5cff;
-}
-.tagline{
-    font-size:20px;
-    opacity:.9;
-}
-.hype{
-    color:#00d4ff;
-    font-size:22px;
-    font-weight:bold;
-    margin-top:20px;
-    animation:pulse 2s infinite;
-}
-@keyframes pulse{
-    0%{text-shadow:0 0 10px #7c5cff;}
-    50%{text-shadow:0 0 30px #00d4ff;}
-    100%{text-shadow:0 0 10px #7c5cff;}
-}
-.btn{
-    display:inline-block;
-    margin:10px;
-    padding:14px 28px;
-    background:linear-gradient(45deg,#7c5cff,#00d4ff);
-    color:white;
-    border-radius:12px;
-    text-decoration:none;
-    font-weight:bold;
-    transition:.3s;
-    box-shadow:0 0 15px rgba(124,92,255,.4);
-}
-.btn:hover{
-    transform:scale(1.08);
-}
-section{
-    padding:40px 20px;
-}
-.card{
-    background:rgba(255,255,255,.06);
-    border:1px solid rgba(255,255,255,.1);
-    backdrop-filter:blur(10px);
-    padding:25px;
-    margin:20px auto;
-    border-radius:16px;
-    max-width:650px;
-    box-shadow:0 0 25px rgba(124,92,255,.15);
-}
-.counter{
-    font-size:24px;
-    font-weight:bold;
-    color:#00d4ff;
-}
-footer{
-    padding:30px;
-    opacity:.6;
+
+footer {
+    text-align: center;
+    padding: 30px;
+    opacity: 0.6;
 }
 </style>
 </head>
+
 <body>
-<div class="stars"></div>
-<div class="stars2"></div>
-<div class="stars3"></div>
-<div class="moon"></div>
-<header>
-    <h1>🌙 $MOONINU</h1>
-<p class="tagline">
-    The Moon Pack is rising 🚀 | Community-driven meme coin
-</p>
-<div class="hype">
-    🔥 JOIN THE PACK BEFORE LIFTOFF 🔥
+
+<div id="particles-js"></div>
+
+<!-- HERO -->
+<div class="hero">
+    <h1>$MOONINU</h1>
+
+    <!-- YOUR COIN IMAGE -->
+    <img src="COIN.png" class="coin" alt="coin">
+
+    <p>The Moon Pack is rising 🚀🐺</p>
+
+    <a href="hhttps://x.com/realmooninu?s=11" target="_blank">
+        <button class="btn">Twitter</button>
+    </a>
+
+    <a href="https://t.me/+7ARcpPWtiVgxYzI0" target="_blank">
+        <button class="btn">Telegram</button>
+    </a>
 </div>
+
+<!-- LIVE STATS -->
+<div class="section">
+    <h2>📊 Live Stats</h2>
+
+    <div class="stats">
+        <div class="stat-box">
+            <h3>Price</h3>
+            <p id="price">$0.00012</p>
+        </div>
+
+        <div class="stat-box">
+            <h3>Market Cap</h3>
+            <p>$1,240,000</p>
+        </div>
+
+        <div class="stat-box">
+            <h3>Telegram Members</h3>
+            <p id="members">2,418</p>
+        </div>
+    </div>
 </div>
-<br>
-<a class="btn" href="#about">About</a>
-<a class="btn" href="#community">Join Community</a>
-</header>
-<section id="about">
-    <div class="card">
-        <h2>About $MOONINU</h2>
-        <p>
-            $MOONINU is a community-powered meme coin built for fun,
-            culture and the next wave of crypto degens.
-            Join the Moon Pack and ride to the moon 🚀
+
+<!-- BUY SECTION -->
+<div class="section">
+    <h2>💸 Buy $MOONINU</h2>
+
+    <div class="buy-box">
+        <p>Swap on your favorite DEX</p>
+
+        <button class="btn">Buy on Uniswap</button>
+        <button class="btn">Buy on PancakeSwap</button>
+
+        <p style="font-size:12px;opacity:0.6;margin-top:10px;">
+            Contract: 0x000...YOURCONTRACT
         </p>
     </div>
-    
-    </div>
-</section>
-<section id="community">
-    <div class="card">
-        <h2>Join the Community</h2>
-        <p>Follow the Moon Pack updates and announcements.</p>
-    <a class="btn" href="https://x.com/realmooninu?s=11" target="_blank">Twitter</a>
-    <a class="btn" href="https://t.me/+7ARcpPWtiVgxYzI0" target="_blank">Telegram</a>
 </div>
-</section>
+
+<!-- COMMUNITY -->
+<div class="section">
+    <h2>🐺 Community</h2>
+    <div class="card">
+        Join the Moon Pack and stay updated on all launches.
+    </div>
+</div>
+
 <footer>
-    © 2026 $MOONINU — Built by the Moon Pack
+    © 2026 $MOONINU • Powered by the Moon Pack 🌙
 </footer>
+
+<!-- SCRIPTS -->
 <script>
-let holders = 1204;
+// PARTICLES BACKGROUND
+particlesJS("particles-js", {
+  particles: {
+    number: { value: 60 },
+    color: { value: "#7c5cff" },
+    shape: { type: "circle" },
+    opacity: { value: 0.5 },
+    size: { value: 3 },
+    move: { speed: 2 }
+  }
+});
+
+// FAKE LIVE PRICE UPDATE
 setInterval(() => {
-    holders += Math.floor(Math.random() * 3);
-    document.getElementById("holders").innerText =
-        "Holders: " + holders.toLocaleString();
+    let price = (0.00010 + Math.random() * 0.00005).toFixed(6);
+    document.getElementById("price").innerText = "$" + price;
+}, 2000);
+
+// FAKE TELEGRAM MEMBER COUNT
+setInterval(() => {
+    let base = 2418;
+    let change = Math.floor(Math.random() * 5);
+    document.getElementById("members").innerText = base + change;
 }, 4000);
 </script>
-    
-    <div class="coin-corner">
-    <img src="COIN.PNG" alt="$MOONINU Coin">
-</div>
 
 </body>
 </html>
