@@ -1,183 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>$MOONINU - The Moon Pack</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>$MOONINU - The Moon Pack is Rising 🚀🐕</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
 
-<!-- PARTICLES JS -->
-<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    :root {
+      --purple: #a855f7;
+    }
 
-<style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    color: white;
-    background: #050816;
-    overflow-x: hidden;
-}
+    body {
+      background: #0a0020;
+      color: white;
+      font-family: 'Inter', system-ui, sans-serif;
+      overflow-x: hidden;
+    }
 
-/* PARTICLES BACKGROUND */
-#particles-js {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-}
+    .title-font {
+      font-family: 'Space Grotesk', sans-serif;
+    }
 
-/* HERO */
-.hero {
-    text-align: center;
-    padding: 80px 20px;
-}
+    .hero-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 30%, rgba(168, 85, 247, 0.15) 0%, transparent 60%),
+                  radial-gradient(circle at 20% 70%, rgba(192, 132, 252, 0.1) 0%, transparent 50%);
+      z-index: -2;
+      pointer-events: none;
+    }
 
-h1 {
-    font-size: 60px;
-    color: #7c5cff;
-    text-shadow: 0 0 25px #7c5cff;
-}
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.75;
+    }
 
-/* SPINNING COIN */
-.coin {
-    width: 180px;
-    margin: 20px auto;
-    animation: spin 6s linear infinite;
-}
+    .coin {
+      animation: float 6s ease-in-out infinite;
+      filter: drop-shadow(0 0 60px rgba(168, 85, 247, 0.9)) 
+              drop-shadow(0 0 30px rgba(236, 72, 153, 0.6));
+      transition: transform 0.4s ease;
+    }
 
-@keyframes spin {
-    from { transform: rotateY(0deg); }
-    to { transform: rotateY(360deg); }
-}
+    .coin:hover {
+      transform: scale(1.08) rotate(8deg);
+    }
 
-/* BUTTONS */
-.btn {
-    padding: 12px 25px;
-    margin: 10px;
-    border-radius: 30px;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    background: #7c5cff;
-    color: white;
-    transition: 0.3s;
-}
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(2deg); }
+      50% { transform: translateY(-30px) rotate(-2deg); }
+    }
 
-.btn:hover {
-    transform: scale(1.05);
-    background: #9a7bff;
-}
+    .glow-text {
+      text-shadow: 
+        0 0 20px #c084fc,
+        0 0 40px #a855f7,
+        0 0 60px #7e22ce;
+    }
 
-/* CARDS */
-.section {
-    padding: 50px 20px;
-    text-align: center;
-}
-
-.card {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    padding: 20px;
-    margin: 15px auto;
-    max-width: 500px;
-    border-radius: 15px;
-}
-
-/* LIVE STATS */
-.stats {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.stat-box {
-    background: rgba(255,255,255,0.05);
-    padding: 20px;
-    border-radius: 15px;
-    min-width: 180px;
-}
-
-/* DEX BUY BOX */
-.buy-box {
-    background: rgba(0,0,0,0.5);
-    border: 1px solid #7c5cff;
-    padding: 25px;
-    max-width: 500px;
-    margin: auto;
-    border-radius: 20px;
-}
-
-footer {
-    text-align: center;
-    padding: 30px;
-    opacity: 0.6;
-}
-</style>
+    .button-hover {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .button-hover:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 20px 25px -5px rgb(168 85 247 / 0.4), 
+                  0 8px 10px -6px rgb(168 85 247 / 0.4);
+    }
+  </style>
 </head>
+<body class="min-h-screen flex flex-col items-center justify-center relative">
+  
+  <!-- Canvas for Constellation Effect -->
+  <canvas id="constellation"></canvas>
+  
+  <!-- Subtle radial overlay -->
+  <div class="hero-bg"></div>
 
-<body>
-
-<div id="particles-js"></div>
-
-<!-- HERO -->
-<div class="hero">
-    <h1>$MOONINU</h1>
-
-    <!-- YOUR COIN IMAGE -->
-    <img src="COIN.png" class="coin" alt="coin">
-
-    <p>The Moon Pack is rising 🚀🐕 </p>
-
-    <a href="https://x.com/realmooninu?s=11" target="_blank">
-        <button class="btn">Twitter</button>
-    </a>
-
-    <a href="https://t.me/+7ARcpPWtiVgxYzI0" target="_blank">
-        <button class="btn">Telegram</button>
-    </a>
-</div>
-
-<!-- COMMUNITY -->
-<div class="section">
-    <h2> 🐕🌙 Community</h2>
-    <div class="card">
-          $MOONINU is a community-powered meme coin built for fun,
-            culture and the next wave of crypto degens.
-            Join the Moon Pack and ride to the moon 🚀
+  <div class="max-w-3xl mx-auto text-center px-6 py-16 relative z-10">
+    <!-- Header / Title -->
+    <div class="mb-8">
+      <h1 class="title-font text-[5.5rem] md:text-[7rem] font-bold tracking-[-0.07em] leading-none text-transparent bg-clip-text bg-gradient-to-b from-violet-300 via-purple-400 to-fuchsia-400 glow-text">
+        $MOONINU
+      </h1>
     </div>
-</div>
 
-<footer>
-    © 2026 $MOONINU • Powered by the Moon Pack 🌙
-</footer>
+    <!-- Coin -->
+    <div class="flex justify-center mb-12">
+      <img id="coin" src="COIN.png" alt="$MOONINU Coin" 
+           class="coin w-72 md:w-96 rounded-full border-8 border-violet-300/80 bg-black p-2">
+    </div>
 
-<!-- SCRIPTS -->
-<script>
-// PARTICLES BACKGROUND
-particlesJS("particles-js", {
-  particles: {
-    number: { value: 60 },
-    color: { value: "#7c5cff" },
-    shape: { type: "circle" },
-    opacity: { value: 0.5 },
-    size: { value: 3 },
-    move: { speed: 2 }
-  }
-});
+    <!-- Tagline -->
+    <p class="text-4xl md:text-5xl font-medium mb-16 tracking-tight">
+      The Moon Pack is rising <span class="text-5xl">🚀🐕</span>
+    </p>
 
-// FAKE LIVE PRICE UPDATE
-setInterval(() => {
-    let price = (0.00010 + Math.random() * 0.00005).toFixed(6);
-    document.getElementById("price").innerText = "$" + price;
-}, 2000);
+    <!-- Social Buttons -->
+    <div class="flex flex-col sm:flex-row gap-6 justify-center mb-20">
+      <a href="https://x.com/realmooninu?s=11" target="_blank"
+         class="button-hover group bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-500 hover:to-purple-500 text-white font-semibold text-2xl px-12 py-7 rounded-3xl flex items-center justify-center gap-4 shadow-xl">
+        <i class="fa-brands fa-x-twitter text-3xl"></i>
+        <span>Twitter / X</span>
+      </a>
+      
+      <a href="https://t.me/+7ARcpPWtiVgxYzI0" target="_blank"
+         class="button-hover group bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-semibold text-2xl px-12 py-7 rounded-3xl flex items-center justify-center gap-4 shadow-xl">
+        <i class="fa-brands fa-telegram text-3xl"></i>
+        <span>Telegram</span>
+      </a>
+    </div>
 
-// FAKE TELEGRAM MEMBER COUNT
-setInterval(() => {
-    let base = 2418;
-    let change = Math.floor(Math.random() * 5);
-    document.getElementById("members").innerText = base + change;
-}, 4000);
-</script>
+    <!-- Community Section -->
+    <div class="flex items-center justify-center gap-3 mb-6">
+      <span class="text-5xl">🐕</span>
+      <span class="text-5xl">🌙</span>
+      <h2 class="text-5xl font-bold tracking-tight text-white">Community</h2>
+    </div>
 
+    <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-10 max-w-lg mx-auto">
+      <p class="text-xl leading-relaxed text-violet-100">
+        $MOONINU is a community-driven meme coin on a mission to the moon.<br><br>
+        Join the pack, vibe with degens, and let's make history together.
+      </p>
+    </div>
+
+    <!-- Footer Info -->
+    <div class="mt-20 text-violet-400/70 text-sm flex flex-col gap-2">
+      <p>Built for the culture • For entertainment only</p>
+      <p class="text-xs">johnporkandtung.github.io/MOONINU-website</p>
+    </div>
+  </div>
+
+  <script>
+    // Constellation Canvas Animation
+    const canvas = document.getElementById('constellation');
+    const ctx = canvas.getContext('2d');
+    
+    let stars = [];
+    let lines = [];
+    
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    
+    class Star {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.radius = Math.random() * 2.2 + 0.8;
+        this.speed = Math.random() * 0.015 + 0.005;
+        this.opacity = Math.random() * 0.7 + 0.3;
+      }
+      
+      update() {
+        this.opacity = 0.4 + Math.sin(Date.now() * this.speed) * 0.6;
+      }
+      
+      draw() {
+        ctx.save();
+        ctx.globalAlpha = this.opacity;
+        ctx.fillStyle = '#e0bbff';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+    
+    function createStars(count) {
+      stars = [];
+      for (let i = 0; i < count; i++) {
+        stars.push(new Star());
+      }
+    }
+    
+    function connectStars() {
+      ctx.strokeStyle = 'rgba(192, 132, 252, 0.12)';
+      ctx.lineWidth = 0.8;
+      
+      for (let i = 0; i < stars.length; i++) {
+        for (let j = i + 1; j < stars.length; j++) {
+          const dx = stars[i].x - stars[j].x;
+          const dy = stars[i].y - stars[j].y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          
+          if (distance < 160) {
+            ctx.globalAlpha = (1 - distance / 160) * 0.4;
+            ctx.beginPath();
+            ctx.moveTo(stars[i].x, stars[i].y);
+            ctx.lineTo(stars[j].x, stars[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+      ctx.globalAlpha = 1;
+    }
+    
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      // Draw connections first
+      connectStars();
+      
+      // Draw and update stars
+      stars.forEach(star => {
+        star.update();
+        star.draw();
+      });
+      
+      requestAnimationFrame(animate);
+    }
+    
+    // Initialize
+    window.addEventListener('resize', () => {
+      resizeCanvas();
+      createStars(220);
+    });
+    
+    resizeCanvas();
+    createStars(220);
+    animate();
+    
+    // Make coin clickable (optional fun)
+    document.getElementById('coin').addEventListener('click', () => {
+      const coin = document.getElementById('coin');
+      coin.style.transform = 'scale(1.3) rotate(25deg)';
+      setTimeout(() => {
+        coin.style.transform = '';
+      }, 300);
+    });
+  </script>
 </body>
 </html>
